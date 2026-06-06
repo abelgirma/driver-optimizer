@@ -1,0 +1,18 @@
+### Check Status
+GET http://localhost:8080/api/driver/status
+
+### Add a Trip
+POST http://localhost:8080/api/driver/trip
+Content-Type: application/json
+
+{
+    "tripId": "T001",
+    "pickupLocation": "Reagan Airport",
+    "dropoffLocation": "Downtown DC",
+    "distanceMiles": 8.5,
+    "estimatedEarnings": 24.50,
+    "durationMinutes": 25
+}
+
+### Get All Trips
+GET http://localhost:8080/api/driver/trips
