@@ -1,4 +1,4 @@
-package com.abel.driver_optimizer;
+package com.abel.driver_optimizer.model;
 
 import lombok.Data;
 
