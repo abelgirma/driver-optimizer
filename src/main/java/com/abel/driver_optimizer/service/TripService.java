@@ -1,22 +1,23 @@
 package com.abel.driver_optimizer.service;
 
 import com.abel.driver_optimizer.model.Trip;
+import com.abel.driver_optimizer.repository.TripRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TripService {
 
-    private List<Trip> trips = new ArrayList<>();
+    @Autowired
+    private TripRepository tripRepository;
 
     public Trip addTrip(Trip trip) {
-        trips.add(trip);
-        return trip;
+        return tripRepository.save(trip);
     }
 
     public List<Trip> getAllTrips() {
-        return trips;
+        return tripRepository.findAll();
     }
 
     public double calculateEarningsPerMile(Trip trip) {
@@ -25,7 +26,7 @@ public class TripService {
     }
 
     public Trip getBestTrip() {
-        return trips.stream()
+        return tripRepository.findAll().stream()
                 .max((t1, t2) -> Double.compare(
                         calculateEarningsPerMile(t1),
                         calculateEarningsPerMile(t2)))

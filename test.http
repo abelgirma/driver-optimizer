@@ -1,18 +1,44 @@
 ### Check Status
 GET http://localhost:8080/api/driver/status
 
-### Add a Trip
+### Add Trip 1
 POST http://localhost:8080/api/driver/trip
 Content-Type: application/json
 
 {
-    "tripId": "T001",
-    "pickupLocation": "Reagan Airport",
+    "pickupLocation": "Alexandria VA",
+    "dropoffLocation": "Reagan Airport",
+    "distanceMiles": 5.2,
+    "estimatedEarnings": 14.50,
+    "durationMinutes": 18
+}
+
+### Add Trip 2
+POST http://localhost:8080/api/driver/trip
+Content-Type: application/json
+
+{
+    "pickupLocation": "Pentagon City",
     "dropoffLocation": "Downtown DC",
     "distanceMiles": 8.5,
     "estimatedEarnings": 24.50,
     "durationMinutes": 25
 }
 
+### Add Trip 3
+POST http://localhost:8080/api/driver/trip
+Content-Type: application/json
+
+{
+    "pickupLocation": "Tysons Corner",
+    "dropoffLocation": "Dulles Airport",
+    "distanceMiles": 12.0,
+    "estimatedEarnings": 28.00,
+    "durationMinutes": 35
+}
+
 ### Get All Trips
 GET http://localhost:8080/api/driver/trips
+
+### Get Best Trip
+GET http://localhost:8080/api/driver/trips/best
