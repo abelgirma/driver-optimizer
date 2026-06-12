@@ -32,4 +32,19 @@ public class TripService {
                         calculateEarningsPerMile(t2)))
                 .orElse(null);
     }
+
+    public Trip updateTrip(String tripId, Trip updatedTrip) {
+        return tripRepository.findById(tripId).map(existingTrip -> {
+            existingTrip.setPickupLocation(updatedTrip.getPickupLocation());
+            existingTrip.setDropoffLocation(updatedTrip.getDropoffLocation());
+            existingTrip.setDistanceMiles(updatedTrip.getDistanceMiles());
+            existingTrip.setEstimatedEarnings(updatedTrip.getEstimatedEarnings());
+            existingTrip.setDurationMinutes(updatedTrip.getDurationMinutes());
+            return tripRepository.save(existingTrip);
+        }).orElse(null);
+    }
+
+    public void deleteTrip(String tripId) {
+        tripRepository.deleteById(tripId);
+    }
 }
